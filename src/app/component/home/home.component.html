@@ -1,0 +1,30 @@
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Adresse</th>
+    <th>Evaluation Moyenne</th>
+    <th>Details</th>
+  </tr>
+  <tr *ngFor="let restaurant of restaurants" appLineYellowOrRed="{{calculMoyenne(restaurant)}}">
+    <td>
+      {{restaurant.nom}}
+    </td>
+    <td>
+      {{restaurant.adresse}}
+    </td>
+    <td>
+      {{calculMoyenne(restaurant)}}
+    </td>
+    <td>
+      <button type="submit"><a routerLink="/detail" routerLinkActive="active" ariaCurrentWhenActive="page"></a>Plus d'infos</button>
+    </td>
+  </tr>
+  <div>
+    <form #theForm="ngForm"(ngSubmit)="save(theForm)">
+      <h4>Ajouter un restaurant</h4>
+      <input type="text" name="nom" [(ngModel)]="nom" [required]="true"/>
+      <input type="text" name="adresse" [(ngModel)]="adresse" [required]="true"/>
+      <button type="submit">Valider</button>
+    </form>
+  </div>
+</table>

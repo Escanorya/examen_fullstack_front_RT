@@ -1,0 +1,33 @@
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Adresse</th>
+    <th>Photo</th>
+    <th>Evaluations</th>
+  </tr>
+  <tr>
+    <td>
+      {{restaurant?.nom}}
+    </td>
+    <td>
+      {{restaurant?.adresse}}
+    </td>
+    <td>
+      <img ngSrc="{{restaurant?.imageUrl}}" width="100" height="100">
+    </td>
+    <td *ngFor="let evaluation of restaurant?.evaluations">
+      {{evaluation.evaluateur}}
+      {{evaluation.commentaire}}
+      {{evaluation.note}}
+    </td>
+  </tr>
+  <div>
+    <form #theForm="ngForm"(ngSubmit)="save(theForm)">
+      <h4>Ajouter une evaluation</h4>
+      <input type="text" name="nom" [(ngModel)]="evaluateur" [required]="true"/>
+      <input type="text" name="adresse" [(ngModel)]="commentaire"/>
+      <input type="text" name="note" [(ngModel)]="note" [required]="true"/>
+      <button type="submit">Valider</button>
+    </form>
+  </div>
+</table>
